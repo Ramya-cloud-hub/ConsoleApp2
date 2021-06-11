@@ -20,98 +20,104 @@ namespace ConsoleApp2
                 switch (op)
                 {
                     case 1:
-                     int addOutput = AddMethod();
-                        Console.WriteLine("The addition of two number is:  " + addOutput);
+                         AddMethod();
                         break;
-                    case 2:
-                        int subOutput = SubtractionMethod();
-                        Console.WriteLine("The Subtraction of two number is:  " + subOutput);
+                    case 2: SubtractionMethod();
                         break;
-                    case 3:
-                      int mulOutput = MultiplicatinMethod();
-                        Console.WriteLine("The Multiplication of two number is:  " + mulOutput);
-                        break;
-                    case 4:
-                   double divOutput =  DivisionMethod();
-                        Console.WriteLine("The Division of two number is:  " + divOutput);
-                        break;
+                    case 3:MultiplicatinMethod();
+                         break;
+                    case 4:DivisionMethod();
+                         break;
                     default:
                         Console.WriteLine("Press 5 to terminate the Program");
                         break;
-
-
                 }
 
             } while (op != 5);
-
-          
         } //End of Main Method
-        static int AddMethod()
+
+        //Implimentation of Add method
+        static void AddMethod()
         {
-            Console.WriteLine("Enter two number");
-            int result = 0;
-            string a = Console.ReadLine();
-            string b = Console.ReadLine();
-            int x,y = 0;
-            int.TryParse(b, out y);
-            int.TryParse(a ,out x);
-            result = x + y;
-            return result;
-        }
-        static int SubtractionMethod()
-        {
-            Console.WriteLine("Enter two number");
-            int result = 0;
-            string a = Console.ReadLine();
-            string b = Console.ReadLine();
-            int x, y = 0;
-            int.TryParse(b, out y);
-            int.TryParse(a, out x);
-            result = x - y;
-            return result;
-        }
-        static int MultiplicatinMethod()
-        {
-            Console.WriteLine("Enter two number");
-            int result = 0;
-            string a = Console.ReadLine();
-            string b = Console.ReadLine();
-            int x, y = 0;
-            int.TryParse(b, out y);
-            int.TryParse(a, out x);
-            result = x * y;
-            return result;
-        }
-        static double DivisionMethod()
-        {
-            Console.WriteLine("Enter two number");
-            int result = 0;
-            string a = Console.ReadLine();
-            string b = Console.ReadLine();
-            int x, y = 0;
-            int.TryParse(b, out y);
-            int.TryParse(a, out x);
-            if (x == 0 || y == 0)
-            {
-                Console.WriteLine("You can not divide number by Zero please enter valid positive number");
+            Console.WriteLine("Enter two input number to add");
+            string num1 = Console.ReadLine();
+            string num2 = Console.ReadLine();
+            double x,y = 0;
+            if(double.TryParse(num1,out x ) && double.TryParse(num2 , out y)){
+                Console.WriteLine("The addition of two given number is :\n" + (x+y));
             }
             else
             {
-                result = x / y;
+                Console.WriteLine("Enter a valid input numer");
             }
-            return result;
         }
-        static int GetNumberFromUser()
+        //Subtraction Function
+        static void SubtractionMethod()
         {
-            string userInput = Console.ReadLine();
-            int num = 0;
-            int.TryParse(userInput, out num);
-            return num;
+            Console.WriteLine("Enter two input number to subtract");
+            string num1 = Console.ReadLine();
+            string num2 = Console.ReadLine();
+            double x, y = 0;
+            if (double.TryParse(num1, out x) && double.TryParse(num2, out y))
+            {
+                Console.WriteLine("The Subtraction of two given number is:\n" +(x-y));
+            }
+            else
+            {
+                Console.WriteLine("Enter a valid input numer");
+            }
         }
+        //Implimentation of Multiplication Method
+        static void MultiplicatinMethod()
+        {
+            Console.WriteLine("Enter two input number to multiplicate");
+            string num1 = Console.ReadLine();
+            string num2 = Console.ReadLine();
+            double x, y = 0;
+            if (double.TryParse(num1, out x) && double.TryParse(num2, out y))
+            {
+                Console.WriteLine("The Multiplication of of two given number is:\n" + (x * y));
+            }
+            else
+            {
+                Console.WriteLine("Enter a valid input numer");
+            }
+        }
+        //Implimentation of division method
+        static void DivisionMethod()
+        {
+                Console.WriteLine("Enter two numbers for division");
+                string num1 = Console.ReadLine();
+                string num2 = Console.ReadLine();
+                double x, y = 0;
+            if (double.TryParse(num1, out x) && double.TryParse(num2, out y))
+            {
+                if (x == 0 || y == 0)
+                {
+                    Console.WriteLine("You can not divide number by Zero please enter valid positive number");
+                }
+                else
+                {
+                    Console.WriteLine("The Division of two given number is:\n" + (x / y));
+                }  
+            }
+            else
+            {
+                Console.WriteLine("Enter a valid input numer");
+            }
 
         }
-        
-     
-        
-    }
+        //Implimentation of UserInput function
+        static int GetNumberFromUser()
+        {
+            int number = 0;
+            string input = Console.ReadLine();
+            if(!int.TryParse(input,out number))
+            {
+                Console.WriteLine("Given input is not Valid Enter valid number");
+            }
+            return number;
+        }
+    }          
+}
 
